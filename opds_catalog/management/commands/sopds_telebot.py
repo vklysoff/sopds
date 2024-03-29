@@ -265,6 +265,8 @@ class Command(BaseCommand):
             buttons += [InlineKeyboardButton('EPUB', callback_data='/getfileepub%s'%book_id)]
         if (config.SOPDS_FB2TOMOBI != "") and (book.format == 'fb2'):
             buttons += [InlineKeyboardButton('MOBI', callback_data='/getfilemobi%s'%book_id)]
+        if (config.SOPDS_FB2TOXHTML != "") and (book.format == 'fb2'):
+            buttons += [InlineKeyboardButton('XHTML', callback_data='/getfilexhtml%s'%book_id)]
 
         markup = InlineKeyboardMarkup([buttons])
         bot.sendMessage(chat_id=update.message.chat_id, text=response, parse_mode='HTML', reply_markup=markup)
@@ -314,6 +316,11 @@ class Command(BaseCommand):
             document = dl.getFileDataMobi(book)
             #document = config.SOPDS_SITE_ROOT+reverse("opds_catalog:convert",kwargs={"book_id": book.id, "convert_type": "mobi"}))]
             filename = filename + '.mobi'
+
+        if re.match(r'/getfilexhtml',query):
+            document = dl.getFileDataXhtml(book)
+            #document = config.SOPDS_SITE_ROOT+reverse("opds_catalog:convert",kwargs={"book_id": book.id, "convert_type": "mobi"}))]
+            filename = filename + '.xhtml'
 
         if document:
             bot.send_document(chat_id=callback_query.message.chat_id,document=document,filename=filename)

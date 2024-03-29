@@ -101,6 +101,8 @@ def getFileDataConv(book, convert_type):
         converter_path = config.SOPDS_FB2TOEPUB
     elif convert_type == 'mobi':
         converter_path = config.SOPDS_FB2TOMOBI
+    elif convert_type == 'xhtml':
+        converter_path = config.SOPDS_FB2TOXHTML
     else:
         fo.close()
         return None
@@ -138,6 +140,9 @@ def getFileDataEpub(book):
 
 def getFileDataMobi(book):
     return getFileDataConv(book,'mobi')
+
+def getFileDataXhtml(book):
+    return getFileDataConv(book,'xhtml')
 
 def Download(request, book_id, zip_flag):
     """ Загрузка файла книги """
@@ -366,6 +371,8 @@ def ConvertFB2(request, book_id, convert_type):
         converter_path=config.SOPDS_FB2TOEPUB
     elif convert_type=='mobi':
         converter_path=config.SOPDS_FB2TOMOBI
+    elif convert_type=='xhtml':
+        converter_path=config.SOPDS_FB2TOXHTML
     content_type=mime_detector.fmt(convert_type)
 
     if book.cat_type==opdsdb.CAT_NORMAL:

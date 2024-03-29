@@ -308,6 +308,8 @@ class CatalogsFeed(AuthFeed):
                 enclosure += [opdsEnclosure(reverse("opds_catalog:convert", kwargs={"book_id": item['id'], "convert_type": "epub"}),Mimetype.EPUB, "http://opds-spec.org/acquisition/open-access")]
             if (config.SOPDS_FB2TOMOBI != "") and (item['format'] == 'fb2'):
                 enclosure += [opdsEnclosure(reverse("opds_catalog:convert", kwargs={"book_id": item['id'], "convert_type": "mobi"}),Mimetype.MOBI, "http://opds-spec.org/acquisition/open-access")]
+            if (config.SOPDS_FB2TOXHTML != "") and (item['format'] == 'fb2'):
+                enclosure += [opdsEnclosure(reverse("opds_catalog:convert", kwargs={"book_id": item['id'], "convert_type": "xhtml"}),Mimetype.XHTML, "http://opds-spec.org/acquisition/open-access")]
 
             return enclosure
     
@@ -561,6 +563,9 @@ class SearchBooksFeed(AuthFeed):
         if (config.SOPDS_FB2TOMOBI != "") and (item['format'] == 'fb2'):
             enclosure += [
                 opdsEnclosure(reverse("opds_catalog:convert", kwargs={"book_id": item['id'], "convert_type": "mobi"}), Mimetype.MOBI, "http://opds-spec.org/acquisition/open-access")]
+        if (config.SOPDS_FB2TOXHTML != "") and (item['format'] == 'fb2'):
+            enclosure += [
+                opdsEnclosure(reverse("opds_catalog:convert", kwargs={"book_id": item['id'], "convert_type": "xhtml"}), Mimetype.XHTML, "http://opds-spec.org/acquisition/open-access")]
 
         return enclosure
         
