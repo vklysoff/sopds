@@ -151,6 +151,9 @@ msgstr "Путь к конвертеру FB2-EPUB"
 msgid "Path to FB2-MOBI converter program"
 msgstr "Путь к конвертеру FB2-MOBI"
 
+msgid "Path to FB2-XHTML converter program"
+msgstr "Путь к конвертеру FB2-XHTML"
+
 #: .\sopds\settings.py:207
 msgid "Path to temporary files directory"
 msgstr "Путь к временному каталогу"
