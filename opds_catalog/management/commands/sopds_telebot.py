@@ -320,7 +320,7 @@ class Command(BaseCommand):
         if re.match(r'/getfilexhtml',query):
             document = dl.getFileDataXhtml(book)
             #document = config.SOPDS_SITE_ROOT+reverse("opds_catalog:convert",kwargs={"book_id": book.id, "convert_type": "mobi"}))]
-            filename = filename + '.xhtml'
+            filename = filename + '.html'
 
         if document:
             bot.send_document(chat_id=callback_query.message.chat_id,document=document,filename=filename)
