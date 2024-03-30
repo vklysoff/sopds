@@ -12,3 +12,4 @@ class Mimetype:
     DJVU = 'image/vnd.djvu'
     TEXT = 'text/plain'
     RTF = 'text/rtf'
+    XHTML = 'application/xhtml+xml'
