@@ -38,6 +38,10 @@ class mime_detector:
             return Mimetype.TEXT
         elif fmt.lower() =='rtf':
             return Mimetype.RTF
+        elif fmt.lower() =='xhtml':
+            return Mimetype.XHTML
+        elif fmt.lower() =='html':
+            return Mimetype.HTML
         else:
             return Mimetype.OCTET_STREAM
 

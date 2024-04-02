@@ -13,3 +13,4 @@ class Mimetype:
     TEXT = 'text/plain'
     RTF = 'text/rtf'
     XHTML = 'text/html'
+    HTML = 'text/html'
