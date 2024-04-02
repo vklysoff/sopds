@@ -400,9 +400,10 @@ def ConvertFB2(request, book_id, convert_type):
         # HTTP Header
         response = HttpResponse()
         response["Content-Type"]='%s; name="%s"'%(content_type,dlfilename)
-        response["Content-Disposition"] = 'attachment; filename="%s"'%(dlfilename)
-        response["Content-Transfer-Encoding"]='binary'    
-        response["Content-Length"] = str(len(s))
+        if not (convert_type=='xhtml' or convert_type == 'html'):
+            response["Content-Disposition"] = 'attachment; filename="%s"'%(dlfilename)
+            response["Content-Transfer-Encoding"]='binary'    
+            response["Content-Length"] = str(len(s))
         response.write(s)         
         fo.close()
     else:
